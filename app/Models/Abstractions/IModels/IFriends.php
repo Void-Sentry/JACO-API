@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Models\Abstractions\Friends;
+namespace App\Models\Abstractions\IModels;
 
 interface IFriends extends IEntity
 {
