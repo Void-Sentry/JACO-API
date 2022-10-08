@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatPrivatesTable extends Migration
+class CreateChatPrivateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class CreateChatPrivatesTable extends Migration
     public function up()
     {
         Schema::create('chat_privates', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('friend_id')->constrained();
+            $table->foreignId('message_id')->constrained();
             $table->timestamps();
         });
     }

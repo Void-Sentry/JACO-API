@@ -173,8 +173,20 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        
+        // Route Service Providers
+        App\Providers\RouteServiceProvider\AuthRouteProvider::class,
+        App\Providers\RouteServiceProvider\ChatPrivateRouteProvider::class,
+        App\Providers\RouteServiceProvider\FriendRouteProvider::class,
+        App\Providers\RouteServiceProvider\MessageRouteProvider::class,
+        App\Providers\RouteServiceProvider\UserRouteProvider::class,
 
+        // Bind Service Providers
+        // App\Providers\BindServiceProvider\AuthBindProvider::class,
+        App\Providers\BindServiceProvider\ChatPrivateBindProvider::class,
+        App\Providers\BindServiceProvider\FriendBindProvider::class,
+        App\Providers\BindServiceProvider\MessageBindProvider::class,
+        App\Providers\BindServiceProvider\UserBindProvider::class,
     ],
 
     /*

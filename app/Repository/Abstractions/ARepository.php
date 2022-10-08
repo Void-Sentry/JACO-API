@@ -3,9 +3,11 @@
 namespace App\Repository\Abstractions;
 
 use App\Models\Abstractions\AEntity;
-use App\Repository\Abstractions\IRepositoy;
+use App\Repository\Abstractions\IRepository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
-abstract class ARepository implements IRepositoy {
+abstract class ARepository implements IRepository {
     
     private AEntity $_entity;
 
@@ -14,14 +16,14 @@ abstract class ARepository implements IRepositoy {
         $this->_entity = $entity;
     }
 
-    public function index(): array
+    public function index(): Collection
     {
         return $this->_entity->all();
     }
 
-    public function show(int $id): AEntity
+    public function show(Request $request): AEntity
     {
-        return $this->_entity->find($id);
+        return $this->_entity->find($request->id);
     }
 
     public function store(Request $request): AEntity
@@ -29,17 +31,19 @@ abstract class ARepository implements IRepositoy {
         return $this->_entity->create($request->all());
     }
 
-    public function update(Request $request, int $id): AEntity
+    public function update(Request $request): AEntity
     {
-        $entity = $this->_entity->find($id);
+        $entity = $this->_entity->findOrFail($request->id);
         $entity->fill($request->all());
         $entity->save();
 
         return $entity;
     }
 
-    public function destroy(int $id): AEntity
+    public function destroy(Request $request): AEntity
     {
-        return $this->_entity->delete($id);
+        $item = $this->_entity->findOrFail($request->id);
+        $item->delete();
+        return $item;
     }
 }
