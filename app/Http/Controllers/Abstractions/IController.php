@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Abstractions;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
 interface IController
 {
-    public function index(): array;
-    public function show(): array;
-    public function create(): array;
-    public function update(): array;
-    public function destroy(): array;
+    public function index(): JsonResponse;
+    public function show(Request $request): JsonResponse;
+    public function create(Request $request): JsonResponse;
+    public function update(Request $request): JsonResponse;
+    public function destroy(Request $request): JsonResponse;
 }

@@ -9,15 +9,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ChatPrivate extends AEntity implements IChatPrivate
 {     
-    protected array $fillable = ['friends_id', 'message_id'];
+    protected $fillable = ['friend_id', 'message_id'];
+
+    protected $with = ['friend', 'messages'];
 
     public function friend(): HasOne
     {
-      return $this->hasOne(Friend::class, 'friends_id', 'id');  
+      return $this->hasOne(Friend::class, 'id');  
     } 
 
     public function messages(): HasMany
     {
-      return $this->hasMany(Message::class, 'message_id', 'id');  
+      return $this->hasMany(Message::class, 'id');  
     }
 }
