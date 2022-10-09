@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Message extends AEntity implements IMessage
 {
-    protected $fillable = ['message'];
+    protected $fillable = ['message', 'chat_private_id'];
 
-    public function chatPrivate(): BelongsTo
+    public function chatPrivate(): HasOne
     {
-        return $this->belongsTo(ChatPrivate::class);
+        return $this->hasOne(ChatPrivate::class, 'chat_private_id', 'id');
     }
 }
