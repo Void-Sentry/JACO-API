@@ -16,6 +16,7 @@ class CreateMessageTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('message');
+            $table->foreignId('chat_private_id')->constrained();
             $table->timestamps();
         });
     }

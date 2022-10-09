@@ -4,22 +4,17 @@ namespace App\Models;
 use App\Models\Abstractions\IModels\IChatPrivate;
 use App\Models\Abstractions\AEntity;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class ChatPrivate extends AEntity implements IChatPrivate
 {     
-    protected $fillable = ['friend_id', 'message_id'];
+    protected $fillable = ['friend_id'];
 
-    protected $with = ['friend', 'messages'];
+    protected $with = ['friend'];
 
     public function friend(): HasOne
     {
-      return $this->hasOne(Friend::class, 'id');  
-    } 
-
-    public function messages(): HasMany
-    {
-      return $this->hasMany(Message::class, 'id');  
+      return $this->hasOne(Friend::class, 'id');
     }
 }
