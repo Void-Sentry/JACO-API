@@ -29,6 +29,7 @@ abstract class AController extends Controller implements IController
         try
         {
             return response()->json([
+                'status'    => Response::HTTP_OK,
                 'message'   => 'Lista com todos os registros.',
                 'item'      => $this->_repository->index()
             ], Response::HTTP_OK);
@@ -36,9 +37,10 @@ abstract class AController extends Controller implements IController
         catch(\Exception $e)
         {
             return response()->json([
-                'message' => 'Ocorreu um erro.', 
-                'error' => $e->getMessage()
-            ], Response::HTTP_NOT_FOUND);
+                'status'    => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'message'   => 'Ocorreu um erro.', 
+                'error'     => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -53,15 +55,17 @@ abstract class AController extends Controller implements IController
         try
         {
             return response()->json([
+                'status'    => Response::HTTP_FOUND,
                 'message'   => 'Exibir registro: ' . $request->id,
                 'item'      => $this->_repository->show($request)
-            ], Response::HTTP_OK);
+            ], Response::HTTP_FOUND);
         }
         catch(\Exception $e)
         {
             return response()->json([
-                'message' => 'Ocorreu um erro.', 
-                'error' => $e->getMessage()
+                'status'    => Response::HTTP_NOT_FOUND,
+                'message'   => 'Ocorreu um erro.', 
+                'error'     => $e->getMessage()
             ], Response::HTTP_NOT_FOUND);
         }
     }
@@ -77,16 +81,18 @@ abstract class AController extends Controller implements IController
         try
         {
             return response()->json([
+                'status'    => Response::HTTP_CREATED,
                 'message'   => 'Registro salvo.',
                 'item'      => $this->_repository->store($request)
-            ], Response::HTTP_OK);
+            ], Response::HTTP_CREATED);
         }
         catch(\Exception $e)
         {
             return response()->json([
-                'message' => 'Campos do registro inválidos.',
-                'error' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+                'status'    => Response::HTTP_BAD_REQUEST,
+                'message'   => 'Campos do registro inválidos.',
+                'error'     => $e->getMessage()
+            ], Response::HTTP_BAD_REQUEST);
         }
         
     }
@@ -102,16 +108,18 @@ abstract class AController extends Controller implements IController
         try
         {
             return response()->json([
+                'status'    => Response::HTTP_ACCEPTED,
                 'message'   => 'Registro atualizado.',
                 'item'      => $this->_repository->update($request)
-            ], Response::HTTP_OK);
+            ], Response::HTTP_ACCEPTED);
         }
         catch(\Exception $e)
         {
             return response()->json([
+                'status'    => Response::HTTP_INTERNAL_SERVER_ERROR,
                 'message' => 'Registro não encontrado.', 
                 'error' => $e->getMessage()
-            ], Response::HTTP_NOT_FOUND);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -126,13 +134,15 @@ abstract class AController extends Controller implements IController
         try
         {
             return response()->json([
+                'status'    => Response::HTTP_FOUND,
                 'message'   => 'Registro deletado.',
                 'item'      => $this->_repository->destroy($request)
-            ], Response::HTTP_OK);
+            ], Response::HTTP_FOUND);
         }
         catch(\Exception $e)
         {
             return response()->json([
+                'status'    => Response::HTTP_NOT_FOUND,
                 'message' => 'Registro não encontrado.', 
                 'error' => $e->getMessage()
             ], Response::HTTP_NOT_FOUND);
