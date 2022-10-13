@@ -19,9 +19,9 @@ class User extends AEntity
      */
     protected $fillable = [
         'name',
-        'age',
-        'email',
-        'password',
+        'born',
+        'mail',
+        'pass',
     ];
 
     /**
@@ -30,7 +30,7 @@ class User extends AEntity
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'pass',
         'remember_token',
     ];
 
