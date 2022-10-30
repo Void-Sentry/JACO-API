@@ -17,6 +17,7 @@ class CreateFriendTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_to');
             $table->integer('user_from');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

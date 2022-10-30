@@ -42,6 +42,7 @@ abstract class ARepository implements IRepository {
 
     public function destroy(Request $request): AEntity
     {
+        error_log(json_encode($request->id, JSON_PRETTY_PRINT));
         $item = $this->_entity->findOrFail($request->id);
         $item->delete();
         return $item;
