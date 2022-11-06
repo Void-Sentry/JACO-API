@@ -3,29 +3,24 @@
 namespace App\Events;
  
 // use App\Models\Order;
+use App\Models\ChatPrivate;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
  
-class OrderShipped
+class friend_accepted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
  
     /**
-     * The order instance.
-     *
-     * @var \App\Models\Order
-     */
-    public $chat;
- 
-    /**
      * Create a new event instance.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Service\Abstractions\IServices\IChatPrivate  $chat private
      * @return void
      */
-    public function __construct(ChatPrivate $chat)
+    public function __construct(int $id)
     {
-        $this->chat = $chat;
+        $chat = new ChatPrivate();
+        $chat->create(['friend_id' => $id]);
     }
 }

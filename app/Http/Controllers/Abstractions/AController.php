@@ -7,16 +7,16 @@ use App\Http\Controllers\Abstractions\IController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use App\Repository\Abstractions\IRepository;
+use App\Service\Abstractions\IService;
 use App\Models\Abstractions\AEntity;
 
 abstract class AController extends Controller implements IController
 {
-    private IRepository $_repository;
+    private IService $_service;
 
-    public function __construct(IRepository $repository)
+    public function __construct(IService $service)
     {
-        $this->_repository  = $repository;
+        $this->_service  = $service;
     }
  
     /**
@@ -31,7 +31,7 @@ abstract class AController extends Controller implements IController
             return response()->json([
                 'status'    => Response::HTTP_OK,
                 'message'   => 'Lista com todos os registros.',
-                'item'      => $this->_repository->index()
+                'item'      => $this->_service->index()
             ], Response::HTTP_OK);
         }
         catch(\Exception $e)
@@ -57,7 +57,7 @@ abstract class AController extends Controller implements IController
             return response()->json([
                 'status'    => Response::HTTP_FOUND,
                 'message'   => 'Exibir registro: ' . $request->id,
-                'item'      => $this->_repository->show($request)
+                'item'      => $this->_service->show($request)
             ], Response::HTTP_FOUND);
         }
         catch(\Exception $e)
@@ -83,7 +83,7 @@ abstract class AController extends Controller implements IController
             return response()->json([
                 'status'    => Response::HTTP_CREATED,
                 'message'   => 'Registro salvo.',
-                'item'      => $this->_repository->store($request)
+                'item'      => $this->_service->store($request)
             ], Response::HTTP_CREATED);
         }
         catch(\Exception $e)
@@ -110,7 +110,7 @@ abstract class AController extends Controller implements IController
             return response()->json([
                 'status'    => Response::HTTP_ACCEPTED,
                 'message'   => 'Registro atualizado.',
-                'item'      => $this->_repository->update($request)
+                'item'      => $this->_service->update($request)
             ], Response::HTTP_ACCEPTED);
         }
         catch(\Exception $e)
@@ -136,7 +136,7 @@ abstract class AController extends Controller implements IController
             return response()->json([
                 'status'    => Response::HTTP_FOUND,
                 'message'   => 'Registro deletado.',
-                'item'      => $this->_repository->destroy($request)
+                'item'      => $this->_service->destroy($request)
             ], Response::HTTP_FOUND);
         }
         catch(\Exception $e)

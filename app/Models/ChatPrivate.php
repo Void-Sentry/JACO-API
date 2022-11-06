@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Abstractions\IModels\IChatPrivate;
 use App\Models\Abstractions\AEntity;
 use Illuminate\Database\Eloquent\Relations\HasOne;
