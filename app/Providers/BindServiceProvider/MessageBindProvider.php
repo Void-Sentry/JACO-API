@@ -7,6 +7,7 @@ class MessageBindProvider extends ServiceProvider
     public function register(): void
     {
         \App::bind('App\Http\Controllers\Abstractions\IControllers\IMessage', 'App\Http\Controllers\CMessage');
-        \App::bind('App\Repository\Abstractions\IRepositories\IMessage', 'App\Repository\RMessage');
+        \App::bind('App\Service\Abstractions\IServices\IMessage', 'App\Service\SMessage');
+        \App::bind('App\Models\Abstractions\IModels\IMessage', 'App\Models\Message');
     }
 }

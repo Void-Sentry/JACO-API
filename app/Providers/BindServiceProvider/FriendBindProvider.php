@@ -7,6 +7,7 @@ class FriendBindProvider extends ServiceProvider
     public function register(): void
     {
         \App::bind('App\Http\Controllers\Abstractions\IControllers\IFriend', 'App\Http\Controllers\CFriend');
-        \App::bind('App\Repository\Abstractions\IRepositories\IFriend', 'App\Repository\RFriend');
+        \App::bind('App\Service\Abstractions\IServices\IFriend', 'App\Service\SFriend');
+        \App::bind('App\Models\Abstractions\IModels\IFriend', 'App\Models\Friend');
     }
 }

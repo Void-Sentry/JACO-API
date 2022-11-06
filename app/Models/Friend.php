@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Models\Abstractions\AEntity;
-use App\Models\Abstractions\IModels\IFriends;
+use App\Models\Abstractions\IModels\IFriend;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class Friend extends AEntity implements IFriends
+final class Friend extends AEntity implements IFriend
 {
     protected $fillable = ['user_from', 'user_to', 'status'];
 

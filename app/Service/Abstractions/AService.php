@@ -1,14 +1,14 @@
 <?php 
 
-namespace App\Repository\Abstractions;
+namespace App\Service\Abstractions;
 
 use App\Models\Abstractions\AEntity;
 use App\Models\Abstractions\IEntity;
-use App\Repository\Abstractions\IRepository;
+use App\Service\Abstractions\IService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
-abstract class ARepository implements IRepository {
+abstract class AService implements IService {
     
     private IEntity $_entity;
 
@@ -49,3 +49,5 @@ abstract class ARepository implements IRepository {
         return $item;
     }
 }
+
+?>

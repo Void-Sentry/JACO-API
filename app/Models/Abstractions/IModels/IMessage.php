@@ -8,3 +8,5 @@ interface IMessage extends IEntity
 {
     //
 }
+
+?>

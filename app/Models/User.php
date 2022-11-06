@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Abstractions\AEntity;
+use App\Models\Abstractions\IModels\IUser;
 
-final class User extends AEntity
+final class User extends AEntity implements IUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 

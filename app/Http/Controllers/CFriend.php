@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Repository\Abstractions\IRepositories\IFriend as RIFriend;
+use App\Service\Abstractions\IServices\IFriend as SIFriend;
 use App\Http\Controllers\Abstractions\IControllers\IFriend;
 use App\Http\Controllers\Abstractions\IController;
 use App\Http\Controllers\Abstractions\AController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use App\Repository\RFriend;
+use App\Service\SFriend;
 
 final class CFriend extends AController implements IFriend
 {
-    private RIFriend $_interface;
+    private SIFriend $_interface;
 
-    public function __construct(RIFriend $interface)
+    public function __construct(SIFriend $interface)
     {
         $this->_interface = $interface;
         parent::__construct($interface);
