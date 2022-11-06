@@ -10,4 +10,6 @@ Route::controller(IChatPrivate::class)->group(function () {
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'destroy');
+
+    Route::post('authenticated_list', 'list_chats_from_user_authenticated');
 });
