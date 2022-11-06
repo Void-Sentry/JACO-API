@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Abstractions\AEntity;
 
-class User extends AEntity
+final class User extends AEntity
 {
     use HasApiTokens, HasFactory, Notifiable;
 

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-class ChatPrivate extends AEntity implements IChatPrivate
+final class ChatPrivate extends AEntity implements IChatPrivate
 {     
-    protected $fillable = ['friend_id'];
+  protected $fillable = ['friend_id'];
 
-    protected $with = ['friend'];
+  protected $with = ['friend'];
 
-    public function friend(): HasOne
-    {
-      return $this->hasOne(Friend::class, 'id');
-    }
+  public function friend(): HasOne
+  {
+    return $this->hasOne(Friend::class, 'id', 'friend_id');
+  }
 }

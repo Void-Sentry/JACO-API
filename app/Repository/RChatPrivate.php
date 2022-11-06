@@ -4,9 +4,10 @@ namespace App\Repository;
 
 use App\Repository\Abstractions\ARepository;
 use App\Repository\Abstractions\IRepository;
+use App\Repository\Abstractions\IRepositories\IChatPrivate;
 use App\Models\ChatPrivate;
 
-class RChatPrivate extends ARepository implements IRepository
+final class RChatPrivate extends ARepository implements IChatPrivate
 {
     public function __construct(ChatPrivate $entity)
     {

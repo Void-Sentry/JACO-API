@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class CAuth extends Controller
+final class CAuth extends Controller
 {
     /**
      * Display a listing of the resource.

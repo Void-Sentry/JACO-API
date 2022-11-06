@@ -3,15 +3,16 @@
 namespace App\Repository\Abstractions;
 
 use App\Models\Abstractions\AEntity;
+use App\Models\Abstractions\IEntity;
 use App\Repository\Abstractions\IRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 abstract class ARepository implements IRepository {
     
-    private AEntity $_entity;
+    private IEntity $_entity;
 
-    public function __construct(AEntity $entity)
+    public function __construct(IEntity $entity)
     {
         $this->_entity = $entity;
     }

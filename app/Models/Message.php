@@ -7,7 +7,7 @@ use App\Models\Abstractions\IModels\IMessage;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Message extends AEntity implements IMessage
+final class Message extends AEntity implements IMessage
 {
     protected $fillable = ['message', 'chat_private_id', 'user_from'];
 

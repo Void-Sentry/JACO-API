@@ -10,14 +10,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use App\Repository\RFriend;
 
-final class CFriend extends AController implements IController, IFriend
+final class CFriend extends AController implements IFriend
 {
     private RIFriend $_interface;
 
-    public function __construct(RFriend $repository, RIFriend $interface)
+    public function __construct(RIFriend $interface)
     {
         $this->_interface = $interface;
-        parent::__construct($repository);
+        parent::__construct($interface);
     }
 
     /**
