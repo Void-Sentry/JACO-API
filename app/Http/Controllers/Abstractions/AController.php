@@ -7,14 +7,14 @@ use App\Http\Controllers\Abstractions\IController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use App\Repository\Abstractions\ARepository;
+use App\Repository\Abstractions\IRepository;
 use App\Models\Abstractions\AEntity;
 
 abstract class AController extends Controller implements IController
 {
-    private ARepository $_repository;
+    private IRepository $_repository;
 
-    public function __construct(ARepository $repository)
+    public function __construct(IRepository $repository)
     {
         $this->_repository  = $repository;
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Abstractions\IControllers;
 use App\Http\Controllers\Abstractions\IController;
 use Illuminate\Http\JsonResponse;
 
-interface IFriend
+interface IFriend extends IController
 {
     public function auth_user_list_friends(int $id): JsonResponse;
     

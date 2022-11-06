@@ -6,12 +6,13 @@ use App\Models\Abstractions\AEntity;
 use App\Models\Abstractions\IModels\IFriends;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Friend extends AEntity implements IFriends
+final class Friend extends AEntity implements IFriends
 {
     protected $fillable = ['user_from', 'user_to', 'status'];
 
-    protected $with = ['user_to', 'user_from', 'pending'];
+    protected $with = ['user_to', 'user_from', 'pending', 'messages'];
 
     public function chatPrivate(): BelongsTo
     {
@@ -31,6 +32,11 @@ class Friend extends AEntity implements IFriends
     public function pending(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_from');
+    }
+
+    public function messages(): HasMany
+    {
+      return $this->hasMany(Message::class, 'user_from', 'user_from');
     }
     
 }

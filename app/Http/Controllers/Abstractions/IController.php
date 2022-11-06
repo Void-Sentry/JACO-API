@@ -8,8 +8,12 @@ use Illuminate\Http\JsonResponse;
 interface IController
 {
     public function index(): JsonResponse;
+
     public function show(Request $request): JsonResponse;
+
     public function create(Request $request): JsonResponse;
+
     public function update(Request $request): JsonResponse;
+    
     public function destroy(Request $request): JsonResponse;
 }

@@ -3,10 +3,10 @@
 namespace App\Repository;
 
 use App\Repository\Abstractions\ARepository;
-use App\Repository\Abstractions\IRepository;
+use App\Repository\Abstractions\IRepositories\IUser;
 use App\Models\User;
 
-class RUser extends ARepository implements IRepository
+final class RUser extends ARepository implements IUser
 {
     public function __construct(User $entity)
     {

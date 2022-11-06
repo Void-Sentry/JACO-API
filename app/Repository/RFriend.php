@@ -7,7 +7,7 @@ use App\Repository\Abstractions\IRepository;
 use App\Repository\Abstractions\IRepositories\IFriend;
 use App\Models\Friend;
 
-final class RFriend extends ARepository implements IRepository, IFriend
+final class RFriend extends ARepository implements IFriend
 {
     private Friend $_entity;
 

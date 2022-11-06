@@ -2,7 +2,9 @@
 
 namespace App\Repository\Abstractions\IRepositories;
 
-interface IFriend
+use App\Repository\Abstractions\IRepository;
+
+interface IFriend extends IRepository
 {
     public function auth_user_list_friends(int $id): object;
 
