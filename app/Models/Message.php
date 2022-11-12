@@ -13,11 +13,6 @@ final class Message extends AEntity implements IMessage
 
     protected $with = ['user_from'];
 
-    public function chatPrivate(): HasOne
-    {
-        return $this->hasOne(ChatPrivate::class, 'chat_private_id', 'id');
-    }
-
     public function user_from(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_from');

@@ -7,7 +7,7 @@ use App\Service\Abstractions\IService;
 
 interface IChatPrivate extends IService 
 {
-    public function list_chats_from_user(array $friends): Collection;
+    public function list_chats_from_user(): Collection;
 }
 
 ?>

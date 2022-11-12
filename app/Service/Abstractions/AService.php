@@ -22,9 +22,9 @@ abstract class AService implements IService {
         return $this->_entity->all();
     }
 
-    public function show(Request $request): AEntity
+    public function show(int $id): AEntity
     {
-        return $this->_entity->find($request->id);
+        return $this->_entity->find($id);
     }
 
     public function store(Request $request): AEntity

@@ -47,18 +47,18 @@ abstract class AController extends Controller implements IController
     /**
      * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Request $request): JsonResponse
+    public function show(int $id): JsonResponse
     {
         try
         {
             return response()->json([
                 'status'    => Response::HTTP_FOUND,
-                'message'   => 'Exibir registro: ' . $request->id,
-                'item'      => $this->_service->show($request)
-            ], Response::HTTP_FOUND);
+                'message'   => 'Exibir registro: ' . $id,
+                'item'      => $this->_service->show($id)
+            ], Response::HTTP_OK);
         }
         catch(\Exception $e)
         {

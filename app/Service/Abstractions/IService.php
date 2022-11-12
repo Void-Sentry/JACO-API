@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 interface IService
 {
     public function index(): Collection;
-    public function show(Request $request): AEntity;
+    public function show(int $id): AEntity;
     public function store(Request $request): AEntity;
     public function update(Request $request): AEntity;
     public function destroy(Request $request): AEntity;
