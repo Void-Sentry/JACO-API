@@ -23,16 +23,12 @@ final class CChatPrivate extends AController implements IChatPrivate
 
     public function list_chats_from_user_authenticated(): JsonResponse
     {
-        return response()->json([
-            'item' => $this->_request->all(),
-            'message' => 'teste'
-        ], 200);
         try
         {
             return response()->json(
                 [
                     'message'   => 'Lista com os amigos do usuário autenticado',
-                    'items'     => $this->_service->list_chats_from_user($this->_request->friends)
+                    'items'     => $this->_service->list_chats_from_user()
                 ], Response::HTTP_OK
             );
         }

@@ -6,10 +6,10 @@ use App\Http\Controllers\Abstractions\IControllers\IChatPrivate;
 
 Route::controller(IChatPrivate::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/show', 'show');
+    Route::get('/show/{id}', 'show');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'destroy');
 
-    Route::post('authenticated_list', 'list_chats_from_user_authenticated');
+    Route::get('authenticated_list', 'list_chats_from_user_authenticated');
 });
