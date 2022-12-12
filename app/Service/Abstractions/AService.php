@@ -43,9 +43,8 @@ abstract class AService implements IService {
 
     public function destroy(Request $request): AEntity
     {
-        error_log(json_encode($request->id, JSON_PRETTY_PRINT));
         $item = $this->_entity->findOrFail($request->id);
-        $item->delete();
+        $item->forceDelete();
         return $item;
     }
 }

@@ -16,6 +16,7 @@ class CreateChatPrivateTable extends Migration
         Schema::create('chat_privates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('friend_id')->constrained()->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

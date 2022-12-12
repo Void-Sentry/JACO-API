@@ -18,6 +18,7 @@ class CreateFriendTable extends Migration
             $table->integer('user_to');
             $table->integer('user_from');
             $table->boolean('status')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
