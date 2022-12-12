@@ -7,9 +7,12 @@ use App\Models\Abstractions\IModels\IFriend;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class Friend extends AEntity implements IFriend
 {
+    use SoftDeletes;
+
     protected $fillable = ['user_from', 'user_to', 'status'];
 
     protected $with = ['user_to', 'user_from', 'pending', 'messages'];

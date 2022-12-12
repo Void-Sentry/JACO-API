@@ -94,4 +94,79 @@ final class CFriend extends AController implements IFriend
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function blocked_friends(): JsonResponse
+    {
+        try
+        {
+            return response()->json([
+                'status'    => Response::HTTP_OK,
+                'message'   => 'Amigos bloqueados.',
+                'item'      => $this->_interface->blocked_friends()
+            ], Response::HTTP_OK);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json([
+                'status'    => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'message'   => 'Ocorreu um erro.',
+                'error'     => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function block_friend(string $id): JsonResponse
+    {
+        try
+        {
+            return response()->json([
+                'status'    => Response::HTTP_OK,
+                'message'   => 'Amizade bloqueada.',
+                'item'      => $this->_interface->block_friend($id)
+            ], Response::HTTP_OK);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json([
+                'status'    => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'message'   => 'Ocorreu um erro.',
+                'error'     => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function restore_friend(string $id): JsonResponse
+    {
+        try
+        {
+            return response()->json([
+                'status'    => Response::HTTP_OK,
+                'message'   => 'Amizade restaurada.',
+                'item'      => $this->_interface->restore_friend($id)
+            ], Response::HTTP_OK);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json([
+                'status'    => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'message'   => 'Ocorreu um erro.',
+                'error'     => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

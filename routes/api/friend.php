@@ -14,4 +14,9 @@ Route::controller(IFriend::class)->group(function () {
     Route::get('auth_user_list_friends/{id}', 'auth_user_list_friends');
     Route::get('pending/{id}', 'pending');
     Route::patch('accept_friend/{id}', 'accept_friend');
+
+    
+    Route::get('blocked_friends', 'blocked_friends');blocked_friends
+    Route::patch('block_friend/{id}', 'block_friend');
+    Route::patch('restore_friend/{id}', 'restore_friend');
 });

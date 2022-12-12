@@ -12,4 +12,8 @@ interface IFriend extends IController
     public function pending(int $id): JsonResponse;
 
     public function accept_friend(int $id): JsonResponse;
+
+    public function block_friend(string $id): JsonResponse;
+
+    public function restore_friend(string $id): JsonResponse;
 }

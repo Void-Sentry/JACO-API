@@ -7,10 +7,12 @@ use App\Models\Abstractions\AEntity;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class ChatPrivate extends AEntity implements IChatPrivate
-{     
+{
+  use SoftDeletes;
+
   protected $fillable = ['friend_id'];
 
   protected $with = ['friend', 'messages'];
